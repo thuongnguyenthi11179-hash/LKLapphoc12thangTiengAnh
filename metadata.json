@@ -1,0 +1,6 @@
+{
+  "name": "App học 12 tháng Tiếng aNh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng",
+  "description": "App học 12 tháng Tiếng aNh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng. Luyện phát âm 12 tháng qua 4 mùa lễ hội Việt Nam, phân tích giọng đọc bằng AI, chế độ đua xe vui nhộn và báo cáo chuyên cần cho giáo viên.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
