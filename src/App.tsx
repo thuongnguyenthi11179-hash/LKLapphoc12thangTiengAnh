@@ -7,6 +7,8 @@ import { RacingGameModal } from './components/RacingGameModal';
 import { HallOfFame } from './components/HallOfFame';
 import { TeacherDashboard } from './components/TeacherDashboard';
 import { StudentProfileModal } from './components/StudentProfileModal';
+import { SongProvider } from './context/SongContext';
+import { FloatingSongBar } from './components/FloatingSongBar';
 
 const LOCAL_STORAGE_KEY = 'lkl_smart_tutor_student_v1';
 
@@ -193,7 +195,8 @@ export default function App() {
   const currentMonth = MONTHS_DATA.find((m) => m.id === currentMonthId) || MONTHS_DATA[0];
 
   return (
-    <div className="min-h-screen flex flex-col bg-amber-50/30 text-slate-800">
+    <SongProvider>
+      <div className="min-h-screen flex flex-col bg-amber-50/30 text-slate-800">
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl border border-amber-400 flex items-center gap-2 animate-in slide-in-from-bottom duration-300">
@@ -268,7 +271,7 @@ export default function App() {
             <span>🏫 Trường Tiểu học Lê Kim Lăng - Phường Hòa Xuân - Thành phố Đà Nẵng</span>
           </p>
           <p className="text-xs text-slate-700 font-bold">
-            App học 12 tháng Tiếng aNh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng
+            App học 12 tháng Tiếng Anh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng
           </p>
           <p className="text-[11px] text-slate-500">
             Hỗ trợ học sinh luyện phát âm 12 tháng tiếng Anh chuẩn bản xứ qua 4 mùa lễ hội Việt Nam • Báo cáo chuyên cần dành cho giáo viên
@@ -278,6 +281,10 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Floating mini song player when audio is active */}
+      <FloatingSongBar />
     </div>
+  </SongProvider>
   );
 }

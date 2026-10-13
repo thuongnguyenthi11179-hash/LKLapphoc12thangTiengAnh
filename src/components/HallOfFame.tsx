@@ -61,7 +61,7 @@ export const HallOfFame: React.FC<HallOfFameProps> = ({ currentStudent }) => {
             Ngôi Sao Học Tập Của Tuần 🌟
           </h2>
           <p className="text-amber-100 text-xs md:text-sm mt-1">
-            Vinh danh học sinh chăm chỉ, phát âm chuẩn xác nhất trên App học 12 tháng Tiếng aNh!
+            Vinh danh học sinh chăm chỉ, phát âm chuẩn xác nhất trên App học 12 tháng Tiếng Anh!
           </p>
         </div>
         <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 shrink-0">

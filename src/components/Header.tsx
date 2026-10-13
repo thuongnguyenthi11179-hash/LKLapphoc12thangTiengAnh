@@ -10,7 +10,10 @@ import {
   BookOpen,
   UserCheck,
   Edit3,
+  Music,
+  Pause,
 } from 'lucide-react';
+import { useSong } from '../context/SongContext';
 
 interface HeaderProps {
   currentTab: 'study' | 'racing' | 'leaderboard' | 'teacher';
@@ -33,6 +36,8 @@ export const Header: React.FC<HeaderProps> = ({
   onTriggerSync,
   onOpenStudentModal,
 }) => {
+  const { isPlaying, toggleSong } = useSong();
+
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-amber-200 shadow-sm transition-all">
       <div className="max-w-7xl mx-auto px-4 py-2.5 sm:px-6">
@@ -45,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="font-black text-slate-900 text-sm md:text-base lg:text-lg tracking-tight leading-snug">
-                  App học 12 tháng Tiếng aNh
+                  App học 12 tháng Tiếng Anh
                 </h1>
                 <span className="text-[10px] font-black bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full border border-rose-200 uppercase">
                   Tiểu Học Lê Kim Lăng
@@ -69,6 +74,29 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <BookOpen className="w-4 h-4" />
               <span>Học 12 Tháng</span>
+            </button>
+
+            {/* Nút bấm nghe bài hát 12 Tháng */}
+            <button
+              onClick={toggleSong}
+              title={isPlaying ? 'Bấm để tạm dừng bài hát' : 'Bấm vào để nghe bài hát 12 Tháng Tiếng Anh'}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer shrink-0 shadow-sm active:scale-95 ${
+                isPlaying
+                  ? 'bg-rose-500 text-white shadow-md ring-2 ring-rose-300 animate-pulse'
+                  : 'bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 hover:from-purple-700 hover:to-rose-600 text-white'
+              }`}
+            >
+              {isPlaying ? (
+                <>
+                  <Pause className="w-4 h-4 fill-current" />
+                  <span>Tạm Dừng Bài Hát 🎵</span>
+                </>
+              ) : (
+                <>
+                  <Music className="w-4 h-4" />
+                  <span>Nghe Bài Hát 12 Tháng 🎵</span>
+                </>
+              )}
             </button>
 
             <button

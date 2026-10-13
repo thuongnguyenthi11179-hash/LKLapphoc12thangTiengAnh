@@ -218,7 +218,7 @@ Trả về định dạng JSON:
           description: 'Chia 2 đội tiếp sức nối tên tháng tương ứng với 4 mùa hoa và lễ hội truyền thống của Việt Nam.',
         },
       ],
-      parentMessage: `Kính gửi Quý phụ huynh lớp ${className || '3/1'} Trường Tiểu học Lê Kim Lăng: Tuần này các con đã học rất tiến bộ chuyên đề 12 Tháng tiếng Anh trên App học 12 tháng Tiếng aNh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng. Kính nhờ phụ huynh dành 5 phút mỗi tối nghe con phát âm và khen ngợi số sao con đạt được!`,
+      parentMessage: `Kính gửi Quý phụ huynh lớp ${className || '3/1'} Trường Tiểu học Lê Kim Lăng: Tuần này các con đã học rất tiến bộ chuyên đề 12 Tháng tiếng Anh trên App học 12 tháng Tiếng Anh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng. Kính nhờ phụ huynh dành 5 phút mỗi tối nghe con phát âm và khen ngợi số sao con đạt được!`,
     });
   } catch (err: any) {
     console.error('Error in teacher insights:', err);
@@ -271,7 +271,7 @@ async function startServer() {
   }
 
   app.listen(PORT, () => {
-    console.log(`🚀 App học 12 tháng Tiếng aNh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng running on port ${PORT}`);
+    console.log(`🚀 App học 12 tháng Tiếng Anh dành cho học sinh trường tiểu học Lê Kim Lăng-Phường Hòa Xuân -thành phố Đà Nẵng running on port ${PORT}`);
   });
 }
 

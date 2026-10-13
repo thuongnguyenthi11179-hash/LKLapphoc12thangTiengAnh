@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MonthInfo, PronunciationResult, StudentProfile } from '../types';
 import { MouthVisualizer } from './MouthVisualizer';
+import { SongPlayerCard } from './SongPlayerCard';
+import { useSong } from '../context/SongContext';
 import {
   Volume2,
   Mic,
@@ -48,6 +50,7 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
   onOpenRacingMode,
   onOpenStudentModal,
 }) => {
+  const { pauseSong, isPlaying: isSongPlaying } = useSong();
   const [isListening, setIsListening] = useState(false);
   const [spokenTranscript, setSpokenTranscript] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -65,6 +68,7 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
 
   // Play voice cue
   const handlePlayGreeting = () => {
+    if (isSongPlaying) pauseSong();
     stopAllSpeech();
     setIsSpeakingComment(true);
     speakVietnameseComment(greetingText).finally(() => setIsSpeakingComment(false));
@@ -72,6 +76,7 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
 
   // Play native English audio
   const handlePlayEnglishAudio = async () => {
+    if (isSongPlaying) pauseSong();
     playClickSound();
     stopAllSpeech();
     setIsAudioPlaying(true);
@@ -134,6 +139,7 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
 
   // When spokenTranscript is recorded or submitted, analyze it
   const handleStartListening = () => {
+    if (isSongPlaying) pauseSong();
     playClickSound();
     setResult(null);
     setMicError(null);
@@ -304,7 +310,7 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
               <span>🏫 Trường Tiểu học Lê Kim Lăng - Hòa Xuân - Đà Nẵng</span>
               <span>•</span>
-              <span>App học 12 tháng Tiếng aNh</span>
+              <span>App học 12 tháng Tiếng Anh</span>
             </div>
 
             {/* Voice cue text with speech button */}
@@ -359,6 +365,12 @@ export const MonthStudyView: React.FC<MonthStudyViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* BÀI HÁT 12 THÁNG TIẾNG ANH (AUDIO BÀI HÁT THE MONTHS OF THE YEAR) */}
+      <SongPlayerCard
+        currentMonthId={currentMonth.id}
+        onSelectMonth={onSelectMonth}
+      />
 
       {/* MONTH HEADER NAVIGATION & MULTIMEDIA CARD */}
       <div className="bg-white rounded-3xl p-5 md:p-7 border-2 border-amber-200/80 shadow-lg">
